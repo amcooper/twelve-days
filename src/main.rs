@@ -15,14 +15,14 @@ fn main() {
 
   let mut stanza = String::from("");
 
-  // Get the connectors right
-  // for (index, $gift) in gifts.iter().enumerate() {}
-  // 0:    stanza = gift item + stanza
-  // 1:    stanza = gift item + ", and " + stanza
-  // 2...: stanza = gift item + ", " + stanza
-
-  for gift in gifts.iter() {
-    stanza = gift.item.clone() + &String::from(", ") + &stanza;
+  for (index, gift) in gifts.iter().enumerate() {
+    if index == 0 {
+      stanza = gift.item.clone();
+    } else if index == 1 {
+      stanza = gift.item.clone() + " and " + &stanza;
+    } else {
+      stanza = gift.item.clone() + ", " + &stanza;
+    }
     println!("On the {} day of Christmas, my true love gave to me {}.", gift.sequence, stanza);
   }
 }
